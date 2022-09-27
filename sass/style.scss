@@ -1,0 +1,130 @@
+@import 'base.scss';
+@import 'mixin.scss';
+
+.header {
+  @include container;
+  @include flex-box;
+  justify-content: space-between;
+
+  &-logo {
+    font-weight: bold;
+    font-size: 40px;
+  }
+
+  &-navbar, &-navbar-icons {
+    @include flex-box;
+
+    li + li {
+      margin-left: 10px;
+    }
+
+    i {
+      font-size: 20px;
+    }
+
+    a:hover {
+      color: $secondary-color;
+    }
+  }
+
+  @include responsive(700px) {
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    &-navbar-icons {
+      margin-top: 20px;
+      i {
+        font-size: 30px;
+      }
+    }
+  }
+
+  @include responsive(600px) {
+    &-navbar {
+      display: none
+    }
+  }
+}
+
+.gallery {
+  @include container;
+  @include flex-box;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  &-card {
+    @include flex-box;
+    justify-content: flex-end;
+    flex-direction: column;
+    width: 31%;
+    height: 400px;
+    margin-bottom: 4%;
+    padding: 20px;
+    color: $primary-color;
+
+    &-title {
+      font-size: 2rem;
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    &-btn {
+      padding: 0.6rem 2rem;
+      border: 2px solid $primary-color;
+      color: $primary-color;
+      font-weight: 400; 
+      text-transform: uppercase;
+      letter-spacing: 1px;
+
+      &:hover {
+        background-color: $primary-color;
+        color: $bg-color;
+      }
+    }
+
+    @include responsive(900px) {
+      width: 48%;
+    }
+    @include responsive(600px) {
+      width: 100%;
+    }
+  }
+
+  #card-1 {
+    @include bg-img('animais.jpg');
+  }
+  #card-2 {
+    @include bg-img('arquitetura.jpg');
+  }
+  #card-3 {
+    @include bg-img('cidade.jpg');
+  }
+  #card-4 {
+    @include bg-img('esportes.jpg');
+  }
+  #card-5 {
+    @include bg-img('decoracao.jpg');
+  }
+  #card-6 {
+    @include bg-img('pessoas.jpg');
+  }
+  #card-7 {
+    @include bg-img('paisagem.jpg');
+  }
+  #card-8 {
+    @include bg-img('natureza.jpg');
+  }
+  #card-9 {
+    @include bg-img('refeicoes.jpg');
+  }
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 0;
+
+  span {
+    font-weight: bold;
+    color: $secondary-color;
+  }
+}
