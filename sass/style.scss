@@ -7,43 +7,219 @@
   justify-content: space-between;
 
   &-logo {
+    color:$primary-color;
     font-weight: bold;
     font-size: 40px;
   }
-
-  &-navbar, &-navbar-icons {
+  
+ 
+  &-navbar-icons {
     @include flex-box;
 
     li + li {
-      margin-left: 10px;
+      margin-left: 15px;
     }
 
     i {
       font-size: 20px;
+      color: $text-color;
+      transition: 0.1s;
     }
 
     a:hover {
-      color: $secondary-color;
+      i {
+        color: $secondary-color;
+      }
+    }  
+
+    &-item:not(:last-child) {
+      margin-right: rem(10);
+    }
+
+    a {
+      color: $primary-color;
+      border-radius: 5px;
+      transition: 0.1s;
     }
   }
 
-  @include responsive(700px) {
-    flex-direction: column;
-    margin-bottom: 20px;
+  img {
+    max-width: rem(170);
+  }
 
-    &-navbar-icons {
-      margin-top: 20px;
-      i {
-        font-size: 30px;
+  .dropdown {
+    @include flex-box;
+    position: relative;
+    width: rem(32);
+    height:rem(32);
+    margin-left: rem(20);
+    border-radius: rem(50);
+    transition: all 0.2s 300ms ease-in-out;
+
+    img {
+      width: 50%;
+      color: white;
+    }
+
+    &:hover {
+      background-color: $secondary-color;
+      cursor: pointer;
+      transition: all 0.2s 0ms ease-in-out;
+
+      .dropdown__subnavbar {
+        z-index: 1000;
+        transform: rotateX(0deg);
+        opacity: 1;
+        transition: all 0.1s 200ms ease-in-out;
+      }
+    }
+
+
+    &__subnavbar {
+      @include flex-box;
+      justify-content: flex-start;
+      flex-direction: row;
+      flex-wrap: wrap;
+      text-align: center;
+      width: rem(300);
+      padding: rem(10);
+      cursor: auto;
+
+      box-sizing: content-box;
+      background-color: black;
+
+      position: absolute;
+      top: calc(100% + rem(30));
+      right: rem(0);
+      z-index: -10;
+      border-radius: 5px;
+      border: 2px solid $secondary-color;
+      opacity: 0;
+      transform: rotateX(-90deg);
+      transform-origin: top center;
+      transition: all 0.1s 300ms ease-in-out;
+
+      &:after {
+        content: '';
+        border: rem(8) solid transparent;
+        border-bottom-color: $secondary-color;
+        position: absolute;
+        right: 2%;
+        top: rem(-18);
+      }
+
+      li {
+        display: inline-block;
+        vertical-align: top;
+        width: rem(90);
+        height: rem(90);
+        margin: rem(5);
+        position: relative;
+      }
+
+      &-link {
+        @include flex-box;
+        flex-direction: column;
+        width: rem(90);
+        height: rem(90);
+        text-align: center;
+
+        img {
+          width: rem(25);
+          margin-bottom: rem(10);
+        }
+
+        p {
+          width: rem(76);
+          display: inline-block;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          line-height: rem(14);
+          white-space: nowrap;
+          overflow-wrap: normal;
+        }
+
+        &:hover {
+          background-color: #20c99618 !important;
+          cursor: pointer;
+
+            p {
+            white-space: normal;
+            overflow-wrap: break-word;
+            }
+        }
       }
     }
   }
 
-  @include responsive(600px) {
-    &-navbar {
-      display: none
+  .usuario {
+  @include flex-box;
+    justify-content: space-between;
+    min-width: rem(100);
+    padding: rem(2) rem(2) rem(2) rem(10);
+    // border: 1px solid $branco;
+    border-radius: rem(50);
+    overflow: hidden;
+    transition: 02s;
+
+    &__name {
+      margin-right: rem(7);
+      color: white;
+    }
+
+    &__card {
+      width: rem(32);
+      height: rem(32);
+
+      &-img {
+        @include flex-box;
+        border-radius: 50%;
+        overflow: hidden;
+
+        img {
+          width: rem(32);
+          height: rem(32);
+        }
+      }
+    }
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.637);
+      cursor: pointer;
     }
   }
+
+  @include responsive(420px) {
+    flex-direction: column;
+
+    .navbar-icons {
+      i {
+        font-size: 30px;
+      }
+    }
+
+    .dropdown {
+      position: initial;
+      margin-left: rem(120);
+
+      &__subnavbar {
+        max-width: 100%;
+        left: 10%;
+        right: 10%;
+        top: 120px;
+
+        &:after {
+          display: none
+        }
+      }
+    }
+  }
+
+  // @include responsive(600px) {
+  //   &-navbar {
+  //     display: none
+  //   }
+  // }
 }
 
 .gallery {
